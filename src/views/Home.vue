@@ -1,24 +1,43 @@
 <template>
 	<div class="login-form">
 		<h2>Log in</h2>
-		<input type="text" placeholder="Login">
-		<input type="password" placeholder="Password">
+		<input type="text" placeholder="Login"
+			v-model="login"
+		>
+		<input type="password" placeholder="Password"
+			v-model="password"
+		>
 		<div class="login-register">
-			<router-link to="/todos" id="btn-login">
+			<span id="btn-login" @click="logIn">
 				Login
-			</router-link>
+			</span>
 
 			<span id="register">
 				New user?
 				<a href="">Sign up</a>
 			</span>
+
+			<router-link to="/todos">
+				Login
+			</router-link>
 		</div>
 	</div>
 </template>
 
 <script>
 	export default {
-		name: "Home"
+		name: "Home",
+		data() {
+			return {
+				login: '',
+				password: '',
+			}
+		},
+		methods: {
+			logIn() {
+				console.log(this.login, this.password)
+			}
+		}
 	}
 </script>
 
