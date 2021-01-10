@@ -1,89 +1,38 @@
 <template>
-	<div class="login-form">
-		<h2>Log in</h2>
-		<input type="text" placeholder="Login"
-			v-model="login"
-		>
-		<input type="password" placeholder="Password"
-			v-model="password"
-		>
-		<div class="login-register">
-			<span id="btn-login" @click="logIn">
-				Login
-			</span>
-
-			<span id="register">
-				New user?
-				<a href="">Sign up</a>
-			</span>
-
-			<router-link to="/todos">
-				Login
-			</router-link>
-		</div>
+	<div>
+		<Login
+			v-if="isRegistered"
+			v-bind:registered="registered"
+			v-on:log-in="logIn"
+			v-on:is-registered="isRegistered"
+		/>
 	</div>
 </template>
 
 <script>
+	import Login from "../components/Login";
 	export default {
 		name: "Home",
+		components: {Login},
 		data() {
 			return {
 				login: '',
 				password: '',
+				registered: true
 			}
 		},
 		methods: {
-			logIn() {
-				console.log(this.login, this.password)
-			}
+			logIn(login, password) {
+				console.log(login, password)
+			},
+			isRegistered() {
+				this.registered = !this.registered;
+				console.log(this.registered)
+			},
 		}
 	}
 </script>
 
 <style scoped>
-	h2 {
-		margin-bottom: 1rem;
-		font-size: 1.2rem;
-	}
-	.login-form {
-		display: flex;
-		flex-direction: column;
 
-		margin: 0 auto;
-
-		width: 300px;
-	}
-	input {
-		margin-bottom: 1rem;
-
-		padding: 0.2rem 0.5rem;
-
-		border: 1px solid #666;
-		border-radius: 0;
-	}
-
-	.login-register {
-		display: flex;
-		flex-direction: column;
-	}
-	#btn-login {
-		padding: 0.5rem 1rem;
-		margin-bottom: 0.5rem;
-
-		border: none;
-		background-color: cornflowerblue;
-		color: white;
-		text-decoration: none;
-		text-align: center;
-
-		cursor: pointer;
-		transition: background-color .2s linear;
-	}
-	#btn-login:hover {
-		background-color: #557dc6;
-	}
-	#register {
-		align-self: flex-end;
-	}
 </style>
