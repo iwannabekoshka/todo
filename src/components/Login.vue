@@ -1,25 +1,27 @@
 <template>
 	<div class="login-form">
-		<h2>Login</h2>
+		<h2> {{ fillText(registered) }} </h2>
 		<input type="text" placeholder="Login"
 			   v-model="login"
 		>
 		<input type="password" placeholder="Password"
 			   v-model="password"
 		>
+		<input type="email"
+			   v-if="!registered"
+			   v-model="email"
+			   placeholder="E-mail">
+
 		<div class="login-register">
-			<span id="btn-login" @click="logIn">
-				Login
+			<span class="btn-enter"
+				  @click="enter(registered)">
+				{{ fillText(registered) }}
 			</span>
 
 			<span id="register">
-				New user?
-				<a @click.prevent="register">Sign up</a>
+				{{ registered ? 'New here?' : 'Already registered?' }}
+				<a @click.prevent="register">{{ fillText(!registered) }}</a>
 			</span>
-
-			<router-link to="/todos">
-				Login
-			</router-link>
 		</div>
 	</div>
 </template>
@@ -32,14 +34,24 @@
 			return {
 				login: '',
 				password: '',
+				email: '',
 			}
 		},
 		methods: {
 			logIn() {
 				this.$emit('log-in', this.login, this.password)
 			},
+			signUp() {
+				this.$emit('sign-up', this.login, this.password, this.email)
+			},
+			enter(registered) {
+				if (registered) {this.logIn()} else {this.signUp()}
+			},
 			register() {
 				this.$emit('is-registered')
+			},
+			fillText(registered) {
+				return registered ? 'Log in' : 'Sign up'
 			}
 		}
 	}
@@ -71,7 +83,7 @@
 		display: flex;
 		flex-direction: column;
 	}
-	#btn-login {
+	.btn-enter {
 		padding: 0.5rem 1rem;
 		margin-bottom: 0.5rem;
 
@@ -84,7 +96,7 @@
 		cursor: pointer;
 		transition: background-color .2s linear;
 	}
-	#btn-login:hover {
+	.btn-enter:hover {
 		background-color: #557dc6;
 	}
 	#register {
@@ -93,5 +105,6 @@
 	#register a {
 		text-decoration: underline;
 		color: dodgerblue;
+		cursor: pointer;
 	}
 </style>

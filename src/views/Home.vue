@@ -1,9 +1,15 @@
 <template>
 	<div>
 		<Login
-			v-if="isRegistered"
+			v-if="registered"
 			v-bind:registered="registered"
 			v-on:log-in="logIn"
+			v-on:is-registered="isRegistered"
+		/>
+		<Login
+			v-else
+			v-bind:registered="registered"
+			v-on:sign-up="signUp"
 			v-on:is-registered="isRegistered"
 		/>
 	</div>
@@ -11,6 +17,7 @@
 
 <script>
 	import Login from "../components/Login";
+	import router from "../router";
 	export default {
 		name: "Home",
 		components: {Login},
@@ -23,11 +30,15 @@
 		},
 		methods: {
 			logIn(login, password) {
-				console.log(login, password)
+				console.log(`login ${login} ${password}`)
+				router.push('/todos')
+			},
+			signUp(login, password, email) {
+				console.log(`signup ${login} ${password} ${email}`)
 			},
 			isRegistered() {
 				this.registered = !this.registered;
-				console.log(this.registered)
+				console.log(`registered: ${this.registered}`)
 			},
 		}
 	}
