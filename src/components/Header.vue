@@ -1,9 +1,8 @@
 <template>
-	<header>
+	<header class="header">
 		<router-link to="/">
-			<h1>TODO Vue.JS</h1>
+			<h1>TODO Vue.JS + Node.JS + MongoDB</h1>
 		</router-link>
-		<hr>
 	</header>
 </template>
 
@@ -14,9 +13,12 @@
 </script>
 
 <style scoped>
-	header {
+	.header {
 		text-align: center;
 		margin-bottom: 2rem;
+		padding-bottom: 0.5rem;
+
+		border-bottom: 1px solid #666;
 	}
 	h1 {
 		font-size: 2rem;

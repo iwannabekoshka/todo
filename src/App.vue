@@ -2,16 +2,22 @@
 	<div id="app">
 		<Header />
 
-		<router-view />
+		<main class="main">
+			<router-view/>
+		</main>
+
+		<Footer />
 	</div>
 </template>
 
 <script>
 	import Header from "./components/Header";
+	import Footer from "./components/Footer";
 
 	export default {
 		name: 'App',
 		components: {
+			Footer,
 			Header
 		}
 	}
@@ -48,6 +54,8 @@
 	}
 	input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
 		outline: none;
+		border-bottom: 2px solid dodgerblue;
+		padding-bottom: calc(var(--input-padding-top) - 1px);
 	}
 	input[type=text]::placeholder, input[type=password]::placeholder, input[type=email]::placeholder {
 		color: transparent;
@@ -72,8 +80,17 @@
 	}
 
 	#app {
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+
 		margin: 0 auto;
 		width: 80%;
+	}
+	.main {
+		margin: 0px auto;
+		width: 800px;
+		flex: 1 0 auto;
 	}
 
 	@media(max-width: 300px) {

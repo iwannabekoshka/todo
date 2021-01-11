@@ -58,9 +58,6 @@
 	}
 	input[type="text"] {
 		margin: 0 1rem 0 0;
-
-		border: 1px solid #666;
-		border-radius: 0;
 	}
 	#btn-add {
 		padding: var(--input-padding-top) calc(var(--input-padding-left) * 6);

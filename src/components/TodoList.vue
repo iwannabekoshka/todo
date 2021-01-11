@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="todo-list">
 		<TodoItem
 			v-for="(todo, index) of todos"
 			v-bind:todo="todo"
