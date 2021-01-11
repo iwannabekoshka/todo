@@ -1,25 +1,25 @@
 <template>
 	<div class="login-form">
-		<h2>Log in</h2>
-
-		<span class="label-login">Login</span>
+		<h2>Sign up</h2>
 		<input type="text" placeholder="Login"
 			   v-model="login"
-			   v-on:change="showLabelLogin"
 		>
 		<input type="password" placeholder="Password"
 			   v-model="password"
 		>
+		<input type="email" placeholder="Email"
+			   v-model="email"
+		>
 
 		<div class="login-register">
 			<span class="btn-enter"
-				  @click="logIn()">
-				Log in
+				  @click="signUp()">
+				Sign in
 			</span>
 
 			<span id="register">
-				New here?
-				<a @click.prevent="changeForm">Sign up</a>
+				Already registered?
+				<a @click.prevent="changeForm">Log in</a>
 			</span>
 		</div>
 	</div>
@@ -27,17 +27,18 @@
 
 <script>
 	export default {
-		name: "Login",
+		name: "Register",
 		props: ['registered'],
 		data() {
 			return {
 				login: '',
 				password: '',
+				email: '',
 			}
 		},
 		methods: {
-			logIn() {
-				this.$emit('log-in', this.login, this.password)
+			signUp() {
+				this.$emit('sign-up', this.login, this.password, this.email)
 			},
 			changeForm() {
 				this.$emit('change-form')

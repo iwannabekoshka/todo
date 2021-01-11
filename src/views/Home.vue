@@ -4,13 +4,13 @@
 			v-if="registered"
 			v-bind:registered="registered"
 			v-on:log-in="logIn"
-			v-on:is-registered="isRegistered"
+			v-on:change-form="changeForm"
 		/>
-		<Login
+		<Register
 			v-else
 			v-bind:registered="registered"
 			v-on:sign-up="signUp"
-			v-on:is-registered="isRegistered"
+			v-on:change-form="changeForm"
 		/>
 	</div>
 </template>
@@ -18,9 +18,10 @@
 <script>
 	import Login from "../components/Login";
 	import router from "../router";
+	import Register from "../components/Register";
 	export default {
 		name: "Home",
-		components: {Login},
+		components: {Register, Login},
 		data() {
 			return {
 				login: '',
@@ -36,7 +37,7 @@
 			signUp(login, password, email) {
 				console.log(`signup ${login} ${password} ${email}`)
 			},
-			isRegistered() {
+			changeForm() {
 				this.registered = !this.registered;
 				console.log(`registered: ${this.registered}`)
 			},
