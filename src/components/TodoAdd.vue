@@ -1,10 +1,13 @@
 <template>
 	<div class="add-todo">
-		<h2>Add todo todo</h2>
+		<h2>Todos</h2>
 		<div class="add-form">
-			<input type="text" id="text-add" placeholder="Write your todo here..."
-				v-model="title"
-			>
+			<div class="input-block">
+				<span class="input-placeholder" v-bind:class="{show:title}">Add new todo</span>
+				<input type="text" id="text-add" placeholder="Write your todo here..."
+					  v-model="title"
+				>
+			</div>
 			<button id="btn-add"
 				v-on:click="addTodo"
 			>Add</button>
@@ -38,10 +41,6 @@
 </script>
 
 <style scoped>
-	h2 {
-		margin-bottom: 1rem;
-		font-size: 1.2rem;
-	}
 	.add-todo {
 		display: flex;
 		flex-direction: column;
@@ -52,17 +51,19 @@
 	.add-form {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
+	}
+	.input-block {
+		width: 90%;
 	}
 	input[type="text"] {
-		padding: 0.2rem 0.5rem;
-		margin-right: 1rem;
-		width: 90%;
+		margin: 0 1rem 0 0;
 
 		border: 1px solid #666;
 		border-radius: 0;
 	}
 	#btn-add {
-		padding: 0.5rem 1rem;
+		padding: var(--input-padding-top) calc(var(--input-padding-left) * 6);
 
 		border: none;
 		background-color: cornflowerblue;

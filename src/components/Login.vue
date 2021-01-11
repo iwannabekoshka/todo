@@ -2,14 +2,19 @@
 	<div class="login-form">
 		<h2>Log in</h2>
 
-		<span class="label-login">Login</span>
-		<input type="text" placeholder="Login"
-			   v-model="login"
-			   v-on:change="showLabelLogin"
-		>
-		<input type="password" placeholder="Password"
-			   v-model="password"
-		>
+		<div class="input-block">
+			<span class="input-placeholder" v-bind:class="{show:login}">Login</span>
+			<input type="text" class=""
+				   v-model="login"
+			>
+		</div>
+
+		<div class="input-block">
+			<span class="input-placeholder" v-bind:class="{show:password}">Password</span>
+			<input type="password"
+				   v-model="password"
+			>
+		</div>
 
 		<div class="login-register">
 			<span class="btn-enter"
@@ -17,7 +22,7 @@
 				Log in
 			</span>
 
-			<span id="register">
+			<span class="register">
 				New here?
 				<a @click.prevent="changeForm">Sign up</a>
 			</span>
@@ -47,53 +52,5 @@
 </script>
 
 <style scoped>
-	h2 {
-		margin-bottom: 1rem;
-		font-size: 1.2rem;
-	}
-	.login-form {
-		display: flex;
-		flex-direction: column;
 
-		margin: 0 auto;
-
-		width: 300px;
-	}
-	input {
-		margin-bottom: 1.5rem;
-
-		padding: 0.2rem 0.5rem;
-
-		border: 1px solid #666;
-		border-radius: 0;
-	}
-
-	.login-register {
-		display: flex;
-		flex-direction: column;
-	}
-	.btn-enter {
-		padding: 0.5rem 1rem;
-		margin-bottom: 0.5rem;
-
-		border: none;
-		background-color: cornflowerblue;
-		color: white;
-		text-decoration: none;
-		text-align: center;
-
-		cursor: pointer;
-		transition: background-color .2s linear;
-	}
-	.btn-enter:hover {
-		background-color: #557dc6;
-	}
-	#register {
-		align-self: flex-end;
-	}
-	#register a {
-		text-decoration: underline;
-		color: dodgerblue;
-		cursor: pointer;
-	}
 </style>
