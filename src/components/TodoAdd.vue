@@ -28,7 +28,7 @@
 				if (this.title.trim()) {
 					const newTodo = {
 						id: `${Date.now()}`,
-						text: this.title,
+						title: this.title,
 						completed: false
 					};
 

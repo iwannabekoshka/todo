@@ -8,7 +8,7 @@
 			<span class="todo__num">{{ index+1 }}</span>
 			<span class="todo__text"
 				v-bind:class="{ completed: todo.completed }"
-			>{{ todo.text }}</span>
+			>{{ todo.title }}</span>
 		</div>
 		<button class="todo__del"
 			v-on:click="delTodo"

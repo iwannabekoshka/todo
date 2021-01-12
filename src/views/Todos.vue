@@ -1,44 +1,45 @@
 <template>
-	<div>
+	<div class="todos">
 		<TodoAdd
 				v-on:add-todo="addTodo"
 		/>
+		<Loader  v-if="loading"/>
 		<TodoList
+				v-else-if="todos.length"
 				v-bind:todos="todos"
 				v-on:check-todo="checkTodo"
 				v-on:del-todo="delTodo"
 		/>
+		<p class="no-todos" v-else>No todos :( So get started and add new one!</p>
 	</div>
 </template>
 
 <script>
 	import TodoList from "@/components/TodoList";
 	import TodoAdd from "@/components/TodoAdd";
+	import Loader from "../components/Loader";
 
 	export default {
 		name: 'Todos',
 		data() {
 			return {
-				todos: [
-					{
-						id: '111',
-						text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos pariatur ratione sapiente voluptatem? Corporis incidunt iure nobis odio velit voluptatibus.',
-						completed: true
-					},
-					{
-						id: '222',
-						text: 'lorem2',
-						completed: false
-					},
-					{
-						id: '333',
-						text: 'lorem3',
-						completed: false
-					},
-				],
+				todos: [],
+				loading: true
 			}
 		},
+		mounted() {
+			fetch('https://jsonplaceholder.typicode.com/todos')
+				.then(response => response.json())
+				.then(json => {
+					setTimeout( () => {
+						// this.todos = json
+						this.loading = false
+					},2000)
+
+				})
+		},
 		components: {
+			Loader,
 			TodoAdd,
 			TodoList,
 		},
@@ -57,5 +58,11 @@
 </script>
 
 <style scoped>
-
+	.todos {
+		display: flex;
+		flex-direction: column;
+	}
+	.no-todos {
+		align-self: center;
+	}
 </style>
