@@ -3,6 +3,7 @@
 		<Login
 			v-if="registered"
 			v-bind:registered="registered"
+			v-bind:registeredNow="registeredNow"
 			v-on:log-in="logIn"
 			v-on:change-form="changeForm"
 		/>
@@ -12,6 +13,10 @@
 			v-on:sign-up="signUp"
 			v-on:change-form="changeForm"
 		/>
+		<Popup
+			v-if="registeredNow"
+			v-on:close="closePopup"
+		/>
 	</div>
 </template>
 
@@ -19,14 +24,16 @@
 	import Login from "../components/Login";
 	import router from "../router";
 	import Register from "../components/Register";
+	import Popup from "../components/Popup";
 	export default {
 		name: "Home",
-		components: {Register, Login},
+		components: {Popup, Register, Login},
 		data() {
 			return {
 				login: '',
 				password: '',
-				registered: true
+				registered: true,
+				registeredNow: false
 			}
 		},
 		methods: {
@@ -36,11 +43,16 @@
 			},
 			signUp(login, password, email) {
 				console.log(`signup ${login} ${password} ${email}`)
+				this.registered = true;
+				this.registeredNow = true;
+				console.log(`registerednow: ${this.registeredNow}`)
 			},
 			changeForm() {
 				this.registered = !this.registered;
-				console.log(`registered: ${this.registered}`)
 			},
+			closePopup() {
+				this.registeredNow = false;
+			}
 		}
 	}
 </script>

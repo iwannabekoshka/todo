@@ -50,7 +50,7 @@
 		},
 		methods: {
 			signUp() {
-				this.$emit('sign-up', this.login, this.password, this.email)
+				this.$emit('sign-up', this.login, this.password, this.email);
 			},
 			changeForm() {
 				this.$emit('change-form')

@@ -33,7 +33,7 @@
 <script>
 	export default {
 		name: "Login",
-		props: ['registered'],
+		props: ['registered', 'registeredNow'],
 		data() {
 			return {
 				login: '',
