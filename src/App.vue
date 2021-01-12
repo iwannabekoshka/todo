@@ -49,6 +49,7 @@
 		border: none;
 		border-bottom: 1px solid #666;
 		border-radius: 0;
+		background-color: transparent;
 
 		width: 100%;
 	}
@@ -68,6 +69,7 @@
 		position: absolute;
 		top: calc(var(--input-padding-top)/2 + 0.25rem);
 		left: calc(var(--input-padding-left) + 1px);
+		z-index: -1;
 
 		color: #777;
 		font-weight: normal;
@@ -97,7 +99,7 @@
 		flex: 1 0 auto;
 	}
 
-	@media(max-width: 300px) {
+	@media(max-width: 320px) {
 		* {
 			font-size: 12px;
 		}

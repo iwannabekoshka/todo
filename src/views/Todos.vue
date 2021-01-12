@@ -35,7 +35,6 @@
 						// this.todos = json
 						this.loading = false
 					},2000)
-
 				})
 		},
 		components: {
@@ -51,7 +50,7 @@
 				this.todos = this.todos.filter(todo => todo.id !== id)
 			},
 			addTodo(newTodo) {
-				this.todos.push(newTodo)
+				this.todos.push(newTodo);
 			}
 		}
 	}

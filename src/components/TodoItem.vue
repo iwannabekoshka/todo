@@ -58,6 +58,10 @@
 		user-select: none;
 	}
 
+	.todo__text {
+		word-break: break-all;
+	}
+
 	.todo__del {
 		display: flex;
 		align-items: center;
