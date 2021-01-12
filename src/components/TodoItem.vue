@@ -52,6 +52,11 @@
 	.todo__text {
 		margin-right: 1rem;
 	}
+	.todo__check,
+	.todo__num,
+	.todo__del {
+		user-select: none;
+	}
 
 	.todo__del {
 		display: flex;

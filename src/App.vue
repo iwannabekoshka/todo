@@ -73,6 +73,8 @@
 		font-weight: normal;
 
 		transition: 0.5s;
+
+		user-select: none;
 	}
 	.input-placeholder.show {
 		color: black;
