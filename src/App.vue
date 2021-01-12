@@ -62,6 +62,7 @@
 	}
 	.input-block {
 		position: relative;
+		width: 100%;
 	}
 	.input-placeholder {
 		position: absolute;
@@ -89,7 +90,8 @@
 	}
 	.main {
 		margin: 0px auto;
-		width: 800px;
+		width: 100%;
+		max-width: 800px;
 		flex: 1 0 auto;
 	}
 

@@ -54,10 +54,10 @@
 		align-items: center;
 	}
 	.input-block {
-		width: 90%;
+		margin-right: 1rem;
 	}
 	input[type="text"] {
-		margin: 0 1rem 0 0;
+		margin: 0;
 	}
 	#btn-add {
 		padding: var(--input-padding-top) calc(var(--input-padding-left) * 6);
