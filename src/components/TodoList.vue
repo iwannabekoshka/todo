@@ -1,9 +1,9 @@
 <template>
 	<div class="todo-list">
 		<TodoItem
-			v-for="(todo, index) of todos"
+			v-for="(todo, index) of todos.slice().reverse()"
 			v-bind:todo="todo"
-			v-bind:index="index"
+			v-bind:num="todosNum[index]"
 			v-on:check-todo="checkTodo"
 			v-on:del-todo="delTodo"
 		/>
@@ -15,7 +15,7 @@
 	export default {
 		name: "Todos",
 		components: {TodoItem},
-		props: ["todos"],
+		props: ["todos", "todosNum"],
 		methods: {
 			checkTodo(id) {
 				this.$emit('check-todo', id)

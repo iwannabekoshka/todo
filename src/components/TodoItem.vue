@@ -5,7 +5,7 @@
 				v-bind:checked="todo.completed"
 				v-on:change="checkTodo"
 			>
-			<span class="todo__num">{{ index+1 }}</span>
+			<span class="todo__num">{{ num+1 }}</span>
 			<span class="todo__text"
 				v-bind:class="{ completed: todo.completed }"
 			>{{ todo.title }}</span>
@@ -19,7 +19,7 @@
 <script>
 	export default {
 		name: "Todo",
-		props: ["todo", "index"],
+		props: ["todo", "num"],
 		methods: {
 			checkTodo() {
 				this.$emit('check-todo', this.todo.id)
